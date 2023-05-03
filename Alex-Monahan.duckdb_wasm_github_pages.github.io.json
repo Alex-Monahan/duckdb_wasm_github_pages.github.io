@@ -1,0 +1,11 @@
+{
+    "layout": [
+        {
+            "name": "First Table",
+            "sql": [
+                {"statement":"create or replace table cities as select * from {filename}", "parameters":{"filename":"cities.parquet"}},
+                {"statement":"pivot cities on year using sum(population) group by Country;", "parameters":[]}
+            ]
+        }
+    ]
+}
