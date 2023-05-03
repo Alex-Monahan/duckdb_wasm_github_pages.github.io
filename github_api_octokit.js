@@ -3,7 +3,9 @@ import { createCallbackAuth } from "https://cdn.pika.dev/@octokit/auth-callback"
 async function github_auth() {
     let token;
 
-    const auth = createCallbackAuth({ callback: () => token });
+    const auth = createCallbackAuth({ callback: function () {
+        console.log('token from within callback',token);
+    }});
     await auth();
     // {
     //   type: 'unauthenticated'
