@@ -11,3 +11,5 @@ async function test_auth() {
     });
     console.log('response.json()',response.json());
 }
+
+test_auth();
