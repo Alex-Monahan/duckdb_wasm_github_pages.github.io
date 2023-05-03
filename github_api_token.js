@@ -5,11 +5,17 @@ async function test_auth() {
     let token = prompt("Please enter your github personal access token");
     const octokit = new Octokit({ auth: token });
 
-    const response = await octokit.request("GET /orgs/{org}/repos", {
-        org: "octokit",
-        type: "private",
-    });
-    console.log('response.json()',response.json());
+    let response = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+        owner: 'Alex-Monahan',
+        repo: 'duckdb_wasm_github_pages.github.io',
+        path: undefined,
+        headers: {
+          'X-GitHub-Api-Version': '2022-11-28'
+        }
+      })
+    console.log('response',response);
+    console.log('response.data',response.data);
+
 }
 
 test_auth();
